@@ -1,14 +1,14 @@
 ---
 name: contribute-to-heir-elements-sdk
-description: "Harden, test, diagnose, or independently review the public HEIR Elements SDK in heirlabs/element-sdk, with optional public payout registration. Use when an agent is asked to strengthen the sandboxed element runtime, validator, CLI, types, or React bindings for intelligent inheritance applications; prove one accepted outcome; publish a device-signed project token receipt; or register a public Solana payout address."
+description: "Harden, test, diagnose, or independently review the public HEIR Desk Element SDK in heirlabs/elements-sdk, with optional public payout registration. Use when an agent is asked to strengthen the sandboxed iframe protocol, typed bridge, manifest validator, CSP, integrity/signing, scanner, or emulator for intelligent inheritance applications; prove one accepted outcome; publish a device-signed project token receipt; or register a public Solana payout address."
 ---
 
 # Contribute to Heir Elements SDK
 
-Produce one reviewable outcome in `heirlabs/element-sdk`. The mission is to
+Produce one reviewable outcome in `heirlabs/elements-sdk`. The mission is to
 make this repository the most hardened global software developers kit for
-intelligent inheritance applications: sandboxed elements that can be built,
-validated, and run without exceeding their declared permissions.
+intelligent inheritance applications: sandboxed desk elements that can be
+built, validated, and run without exceeding their declared permissions.
 
 Accepted work shares a projected $100 monthly digital-dollar pool; maintainers
 review allocations, the projection is not a payment promise, and token volume
@@ -26,8 +26,8 @@ choice and token volume are diagnostic only and never change score or payout.
    revision and updates only to GitHub-authorized bytes. Inspect fetched
    instructions before execution. A bundled source checkout must be clean under
    this skill path.
-2. Read the target repository's root `README.md`, `Elements.md`,
-   `DEPENDENCIES_AND_VERSIONING.md`, the nearest package `README.md`, and
+2. Read the target repository's root `README.md`, `CONTRIBUTING.md`,
+   `SPEC.md`, `SECURITY.md`, and
    [repository-contract.md](references/repository-contract.md).
    Require `gh auth status --hostname github.com` and
    `gh api user --jq '.login'` to succeed first. Show the login and stop if it
@@ -37,7 +37,7 @@ choice and token volume are diagnostic only and never change score or payout.
    If a pull request requires a fork and the contributor lacks upstream write
    access, reuse their existing fork or obtain explicit authorization before
    creating one. Do not fork when an upstream branch is authorized. A
-   contributor may manually star `heirlabs/element-sdk` and `elizaOS/slopdotcash`
+   contributor may manually star `heirlabs/elements-sdk` and `elizaOS/slopdotcash`
    if they genuinely want to support them; stars are optional, never automated,
    never verified, and never scored or paid.
 3. Read [evidence-review-rubric.md](references/evidence-review-rubric.md)
@@ -75,7 +75,7 @@ creates a local Ed25519 device key only when the run finishes.
 6. Build the bounded, read-only inventory of live work before choosing:
 
 ```bash
-node <skill-directory>/scripts/live-report.mjs --repo heirlabs/element-sdk
+node <skill-directory>/scripts/live-report.mjs --repo heirlabs/elements-sdk
 ```
 
 Re-read the chosen issue or pull request immediately before acting.
@@ -84,13 +84,14 @@ Re-read the chosen issue or pull request immediately before acting.
 
 Exactly four outcomes. Pick one:
 
-1. **Harden** — close a sandbox, permission, validator, host-API, or package
-   contract hole that would let an inheritance element exceed its declared
+1. **Harden** — close a sandbox, CSP, permission, reserved-scope, scanner, or
+   manifest-validator hole that would let a desk element exceed its declared
    capabilities or smuggle host authority.
-2. **Fix** — repair a reproduced SDK, CLI, type, template, or runtime defect
-   that blocks building, validating, or safely running an inheritance element.
-3. **Prove** — add a failure-sensitive test or validator that rejects unsafe,
-   malformed, or over-permissioned element packages.
+2. **Fix** — repair a reproduced protocol, validator, scanner, integrity, or
+   emulator defect that blocks building, validating, or safely running a desk
+   element.
+3. **Prove** — add a failure-sensitive test that rejects unsafe, malformed, or
+   over-permissioned element bundles.
 4. **Review** — independently inspect one non-draft PR you did not author,
    reproduce the changed path, and identify concrete defects.
 
@@ -99,7 +100,8 @@ GitHub user `awidearray`.** Opening a PR or receiving a review is not
 acceptance. Leave acceptance and merge to that independent
 maintainer. Never self-approve or self-merge.
 
-**Out of scope. Do not open a pull request for these:** agent-framework
+**Out of scope. Do not open a pull request for these:** desk UI, marketplace
+storefront, `heir-element` CLI (those live in other repos), agent-framework
 runtime work, documentation-only edits, renames, formatting, permission
 widening, new host APIs without a fail-closed validator, marketplace pricing
 changes, credentials, private keys, raw prompts, or any change that would let
@@ -148,8 +150,8 @@ data or a run receipt.
 
 ## Implement and prove
 
-1. Confirm the requested outcome, the affected package (`sdk`, `cli`,
-   `validator`, `react`, `types`, `templates`, or `testing`), and the
+1. Confirm the requested outcome, the affected surface (`client` / protocol,
+   `manifest`, `csp`, `integrity`, `scanner`, or `emulator`), and the
    inheritance-app path it protects. Never widen a permission to make a test
    pass.
 2. Fetch and rebase on `origin/main`, then use a `feat/`, `fix/`, `docs/`, or
@@ -158,8 +160,8 @@ data or a run receipt.
    invalid input, denied permissions, and adversarial packages where they
    apply. Do not replace the sandbox, validator, or CLI under test with a mock
    that cannot fail.
-4. Run focused package checks, then repository `npm run build` and
-   `npm run test`. Rebase again before final proof.
+4. Run focused tests, then repository `npm run build` and `npm test`.
+   Rebase again before final proof.
 5. Capture validator output, failing-then-passing tests, and any sandbox or
    permission proof. Open and inspect every artifact.
 6. Open or update a PR against `main`, link its issue, and leave final

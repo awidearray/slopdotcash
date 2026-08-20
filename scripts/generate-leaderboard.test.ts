@@ -1548,7 +1548,7 @@ describe("current-head review selection", () => {
             ? "REPOSITORY_PROXIMITY_PRIZE"
             : repositoryName === "asi"
               ? "REPOSITORY_ASI"
-              : repositoryName === "element-sdk"
+              : repositoryName === "elements-sdk"
                 ? "REPOSITORY_ELEMENT_SDK"
                 : "REPOSITORY_ELIZA";
         if (document.includes("query LeaderboardPreflight")) {
@@ -1662,7 +1662,7 @@ describe("current-head review selection", () => {
       { id: "elizaOS/eliza", repositoryId: "REPOSITORY_ELIZA" },
       { id: "elizaOS/asi", repositoryId: "REPOSITORY_ASI" },
       {
-        id: "heirlabs/element-sdk",
+        id: "heirlabs/elements-sdk",
         repositoryId: "REPOSITORY_ELEMENT_SDK",
       },
       {

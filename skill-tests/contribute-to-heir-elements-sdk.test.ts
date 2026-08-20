@@ -43,7 +43,7 @@ describe("contribute-to-heir-elements-sdk", () => {
       /^description:\s*"?(.+?)"?$/m,
     )?.[1];
     assert.strictEqual(name, "contribute-to-heir-elements-sdk");
-    assert.match(String(description), /heirlabs\/element-sdk/i);
+    assert.match(String(description), /heirlabs\/elements-sdk/i);
     assert.match(String(description), /inheritance/i);
     assert.doesNotMatch(source, /\[TODO[:\]]/);
   });
@@ -58,11 +58,11 @@ describe("contribute-to-heir-elements-sdk", () => {
     assert.match(source, /\*\*Fix\*\*/);
     assert.match(source, /\*\*Prove\*\*/);
     assert.match(source, /\*\*Review\*\*/);
-    assert.match(source, /heirlabs\/element-sdk/);
+    assert.match(source, /heirlabs\/elements-sdk/);
     assert.match(source, /origin\/main/);
     assert.match(contract, /Integration branch \| `main`/);
-    assert.match(contract, /heirlabs\/element-sdk/);
-    assert.match(contract, /no root `LICENSE` file/);
+    assert.match(contract, /heirlabs\/elements-sdk/);
+    assert.match(contract, /proprietary/i);
     assert.match(contract, /never\s+infer or claim license or copyright/i);
     assert.match(rubric, /ElementValidator|sandbox|permission/i);
 
@@ -148,7 +148,7 @@ describe("contribute-to-heir-elements-sdk", () => {
     assert.strictEqual(report.status, 0, report.stderr);
     assert.match(
       report.stdout,
-      /--repo heirlabs\/element-sdk|Usage: node scripts\/live-report\.mjs/,
+      /--repo heirlabs\/elements-sdk|Usage: node scripts\/live-report\.mjs/,
     );
   });
 });

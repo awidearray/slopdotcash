@@ -6,10 +6,10 @@ not commit captured logs or traces to the repository.
 
 ## Every claim carries
 
-- the workspace and the exact surface (`sdk` sandbox, permissions, host API,
-  `ElementValidator`, CLI, types, React bindings, or templates);
-- the inheritance-app path it protects (for example wallet signing, encrypted
-  storage, notifications, or inter-element messaging);
+- the exact surface (`client` / protocol, `manifest`, `csp`, `integrity`,
+  `scanner`, or `emulator`);
+- the inheritance-app path it protects (for example reserved-scope denial,
+  CSP lock-down, bundle scanning, or host-proxied `llm.complete`);
 - the exact commands with every flag, and the commit SHA they ran at;
 - a failing test or validator case that existed before the fix, then the
   passing result on the same head;
@@ -33,7 +33,7 @@ Check that host APIs still fail closed when the matching permission is false.
 
 - a claim with no command, commit, or failing-then-passing check;
 - permission widening or a new host API without a deny-by-default test;
-- a sandbox, validator, or CLI replaced by a mock that cannot fail;
+- a sandbox, validator, scanner, or emulator replaced by a mock that cannot fail;
 - edited or deleted tests that previously rejected unsafe packages;
 - dependency or lockfile smuggling, lifecycle hooks, or CI permission growth;
 - documentation-only, rename, or format-only diffs;

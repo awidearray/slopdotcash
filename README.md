@@ -25,8 +25,8 @@ The active projects are:
   the continual-reinforcement-learning framework pursuing The Alberta Plan,
   shares a pledged maximum of **$5,000 USDC per UTC month**.
 - **Heir Elements SDK:** accepted work in
-  [`heirlabs/element-sdk`](https://github.com/heirlabs/element-sdk) that
-  hardens the public Elements SDK for intelligent inheritance applications,
+  [`heirlabs/elements-sdk`](https://github.com/heirlabs/elements-sdk) that
+  hardens the public Desk Element protocol SDK for intelligent inheritance applications,
   created on Slop and merged to `main` by
   [`awidearray`](https://github.com/awidearray), shares a pledged maximum of
   **$100 USDC per UTC month**.

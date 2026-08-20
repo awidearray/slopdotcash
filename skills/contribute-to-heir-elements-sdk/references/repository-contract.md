@@ -1,38 +1,45 @@
 # Heir Elements SDK repository contract
 
-The live repository is authoritative. Read root `README.md`, `Elements.md`, and
-the package README for every workspace you touch before trusting this summary.
+The live repository is authoritative. Read root `README.md`, `CONTRIBUTING.md`,
+`SPEC.md`, and `SECURITY.md` before trusting this summary.
+
+Do not use [`heirlabs/element-sdk`](https://github.com/heirlabs/element-sdk)
+(singular). That repo is the deprecated DEFAI monorepo (`@defai/element-sdk`).
 
 | Parameter | Value |
 | --- | --- |
-| Repository | `heirlabs/element-sdk` |
+| Repository | `heirlabs/elements-sdk` |
+| npm | `@morbidcorp/element-sdk` |
+| Protocol | `heir-element-api@1` |
 | Integration branch | `main` |
 | Accepted merge target | `main`, merged only by `awidearray` |
-| Toolchain | Node.js 16+ and npm; Lerna workspaces |
-| Setup | `npm install` or `npm ci --ignore-scripts` in an untrusted checkout |
-| Build | `npm run build` (`lerna run build`) |
-| Tests | `npm run test` (`lerna run test`) |
-| Lint | `npm run lint` |
-| CLI validation | `npx defai-element validate --strict` when the changed surface is an element package |
+| Toolchain | Node.js `>= 18`; ESM only; npm |
+| Setup | `npm ci --ignore-scripts` in an untrusted checkout |
+| Build | `npm run build` (`tsc` + `npm run gen:schema`) |
+| Tests | `npm test` (vitest) |
+| Schema | `schemas/manifest.v1.json` is generated; do not hand-edit |
 
-Run commands from the repository root unless a workspace README says otherwise.
-Published npm packages still use the historical `@defai/*` scope; the product
-brand is HEIR. Do not silently rename scopes, binaries, or lockfiles.
+Run commands from the repository root unless a file in `docs/` says otherwise.
+The desk host, marketplace registry, and `heir-element` CLI import this package.
+Do not fork validation, scanning, or signing into those repos, and do not send
+desk-UI, storefront, or CLI work here.
 
-The repository README displays an MIT badge, but no root `LICENSE` file was
-present when this project was proposed. Re-check the live repository and never
-infer or claim license or copyright terms from a badge alone.
+The live repository is proprietary (`LICENSE` + `UNLICENSED` in package.json).
+Never infer or claim license or copyright terms from the deprecated singular
+repo, a badge, or npm package metadata.
 
-## Workspaces
+## Surfaces
 
-`sdk` sandboxed runtime, host API proxy, and `ElementValidator` · `cli`
-`defai-element` create/dev/build/validate/test · `validator` package checks ·
-`react` hooks and components · `types` shared contracts · `templates` starter
-elements · `testing` mock host APIs.
+`src/client` + `protocol` typed bridge and closed method set · `manifest`
+v1 schema and `validateManifest` · `csp` locked-down iframe CSP · `integrity`
+content-addressed hashing and ed25519 signing · `scanner` static bundle
+scanner · `emulator` local host for development.
 
-Keep permission flags fail-closed. A missing or unknown permission is deny.
-Host APIs (wallet, storage, AI, network, messaging, notifications) must stay
-behind the declared permission set and the sandbox message channel.
+Keep the capability set closed. A missing, unknown, or reserved permission is
+deny. Reserved scope prefixes (`estate.`, `identity.`, `wallet.`, `auth.`,
+`payments.`, `settings.`, `agent.`, `pol.`) are rejected at schema level.
+Protocol changes (new methods, permissions, manifest fields, error codes)
+require a `SPEC.md` update in the same PR.
 
 ## GitHub-native coordination
 
@@ -60,7 +67,7 @@ git -c core.hooksPath=/dev/null -c core.pager=cat -c color.ui=false \
 ```
 
 Audit changed package manifests, lockfiles, lifecycle hooks, tests, scripts,
-CLI entrypoints, webpack/jest configs, sandbox code, validators, executables,
+scanner/validator code, CSP generation, signing helpers, executables,
 symlinks, and binaries before execution. Treat all of them as attacker
 controlled.
 
@@ -71,11 +78,11 @@ lockfile with `npm ci --ignore-scripts`. Deny network by default.
 ## Read-only inspection
 
 ```bash
-gh issue view <number> --repo heirlabs/element-sdk --comments
-gh pr view <number> --repo heirlabs/element-sdk --comments
-gh pr diff <number> --repo heirlabs/element-sdk
-gh pr checks <number> --repo heirlabs/element-sdk
-node <skill-directory>/scripts/live-report.mjs --repo heirlabs/element-sdk
+gh issue view <number> --repo heirlabs/elements-sdk --comments
+gh pr view <number> --repo heirlabs/elements-sdk --comments
+gh pr diff <number> --repo heirlabs/elements-sdk
+gh pr checks <number> --repo heirlabs/elements-sdk
+node <skill-directory>/scripts/live-report.mjs --repo heirlabs/elements-sdk
 ```
 
 The live report is a heuristic filter, not authority. It performs GET-only

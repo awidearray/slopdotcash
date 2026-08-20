@@ -5,14 +5,14 @@
   "name": "Heir Elements SDK",
   "eyebrow": "Public repository",
   "headline": "Make Money Creating Intelligent Inheritance Apps",
-  "description": "Make the element SDK the most hardened global software developers kit for intelligent inheritance applications.",
+  "description": "Make the Desk Element protocol SDK the most hardened kit for intelligent inheritance applications.",
   "status": "active",
   "repositories": [
     {
-      "id": "heirlabs/element-sdk",
-      "displayName": "heirlabs/element-sdk",
-      "githubUrl": "https://github.com/heirlabs/element-sdk",
-      "description": "Public HEIR Elements SDK monorepo: sandboxed element runtime, validator, CLI, React bindings, and templates for intelligent inheritance apps.",
+      "id": "heirlabs/elements-sdk",
+      "displayName": "heirlabs/elements-sdk",
+      "githubUrl": "https://github.com/heirlabs/elements-sdk",
+      "description": "Protocol SDK for HEIR Desk Elements: sandboxed iframe apps, typed bridge, manifest v1, CSP, integrity, scanner, and emulator.",
       "integrationBranch": "main"
     }
   ],
@@ -45,7 +45,7 @@
   },
   "links": {
     "creator": "https://github.com/awidearray",
-    "repository": "https://github.com/heirlabs/element-sdk",
-    "issues": "https://github.com/heirlabs/element-sdk/issues"
+    "repository": "https://github.com/heirlabs/elements-sdk",
+    "issues": "https://github.com/heirlabs/elements-sdk/issues"
   }
 }
