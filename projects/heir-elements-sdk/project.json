@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1",
+  "id": "heir-elements-sdk",
+  "slug": "heir-elements-sdk",
+  "name": "Heir Elements SDK",
+  "eyebrow": "Public repository",
+  "headline": "Make Money Creating Intelligent Inheritance Apps",
+  "description": "Make the Desk Element protocol SDK the most hardened kit for intelligent inheritance applications.",
+  "status": "active",
+  "repositories": [
+    {
+      "id": "heirlabs/elements-sdk",
+      "displayName": "heirlabs/elements-sdk",
+      "githubUrl": "https://github.com/heirlabs/elements-sdk",
+      "description": "Protocol SDK for HEIR Desk Elements: sandboxed iframe apps, typed bridge, manifest v1, CSP, integrity, scanner, and emulator.",
+      "integrationBranch": "main"
+    }
+  ],
+  "skill": {
+    "id": "contribute-to-heir-elements-sdk",
+    "sourcePath": "skills/contribute-to-heir-elements-sdk",
+    "publicPath": "/projects/heir-elements-sdk/skill.md"
+  },
+  "reviewSkill": {
+    "id": "review-heir-elements-sdk-contributions",
+    "sourcePath": "skills/review-heir-elements-sdk-contributions"
+  },
+  "reward": {
+    "kind": "monthly-pool",
+    "currency": "USDC",
+    "chain": "solana",
+    "rewardStartAt": "2026-08-16T01:15:28.387Z",
+    "cycle": "calendar-month-utc",
+    "monthlyCapMinor": "100000000",
+    "monthlyCapDisplay": "$100",
+    "committedMinor": "0",
+    "paymentMode": "disabled",
+    "feeBasisPoints": 300,
+    "unusedFunds": "rollover-without-cap-increase",
+    "fundingState": "pledged"
+  },
+  "modelPolicy": {
+    "mode": "open-declared",
+    "disclosureRequired": true
+  },
+  "links": {
+    "creator": "https://github.com/awidearray",
+    "repository": "https://github.com/heirlabs/elements-sdk",
+    "issues": "https://github.com/heirlabs/elements-sdk/issues"
+  }
+}

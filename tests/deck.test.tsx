@@ -12,7 +12,7 @@ afterEach(() => {
 });
 
 describe("Slop fundraising deck", () => {
-  it("walks the complete 10-slide story with controls and keyboard navigation", () => {
+  it("walks the complete 9-slide story with controls and keyboard navigation", () => {
     render(<Deck />);
 
     expect(
@@ -21,54 +21,83 @@ describe("Slop fundraising deck", () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getByText("Slop.cash", { selector: "strong" })).toBeVisible();
-    expect(screen.getByText("1 / 10")).toBeInTheDocument();
+    expect(screen.getByText("1 / 9")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Next slide" }));
     expect(
       screen.getByRole("heading", {
-        name: "Two builders. 25K+ GitHub stars.",
+        name: "We built a movement in open source.",
       }),
     ).toBeInTheDocument();
     expect(screen.getByText("Shaw")).toBeInTheDocument();
+    expect(screen.getByText("Nubs")).toBeInTheDocument();
+    expect(screen.getByText("CEO")).toBeInTheDocument();
+    expect(screen.getByText("CTO")).toBeInTheDocument();
+    expect(screen.getByAltText("Shaw GitHub contributions")).toBeVisible();
+    expect(screen.getByAltText("Nubs GitHub contributions")).toBeVisible();
     expect(window.location.hash).toBe("#2");
 
     fireEvent.keyDown(window, { key: "End" });
     expect(
-      screen.getByRole("heading", { name: "We own the results together." }),
+      screen.getByRole("heading", {
+        name: "When we build it, we own it.",
+      }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Next slide" })).toBeDisabled();
 
     fireEvent.keyDown(window, { key: "Home" });
-    expect(screen.getByText("1 / 10")).toBeInTheDocument();
+    expect(screen.getByText("1 / 9")).toBeInTheDocument();
   });
 
-  it("publishes the raise, revenue, token, ownership, and go-to-market model", () => {
+  it("publishes the raise, revenue, differentiation, and go-to-market model", () => {
     const { rerender } = render(<Deck />);
+
+    window.history.replaceState({}, "", "/deck#3");
+    rerender(<Deck key="mission" />);
+    expect(screen.getByText("In progress")).toBeInTheDocument();
+    expect(screen.getByText("Eliza")).toBeInTheDocument();
+    expect(screen.getByText("Proximity Prize")).toBeInTheDocument();
+    expect(screen.getByText("“ASI” continual learning")).toBeInTheDocument();
 
     window.history.replaceState({}, "", "/deck#5");
     rerender(<Deck key="gtm" />);
     expect(screen.getByText("Hack traction.")).toBeInTheDocument();
     expect(screen.getByText("Align the supporters.")).toBeInTheDocument();
     expect(screen.getByText("Make support one click.")).toBeInTheDocument();
-    expect(screen.getByText(/Extropic’s THRML \+ torx/)).toBeInTheDocument();
+    expect(
+      screen.getByText("Turn open projects into public, fundable work."),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/Extropic’s THRML \+ torx/),
+    ).not.toBeInTheDocument();
     expect(screen.getByText(/sponsors like Sapiom/)).toBeInTheDocument();
+    expect(screen.queryByText("01")).not.toBeInTheDocument();
 
     window.history.replaceState({}, "", "/deck#6");
-    rerender(<Deck key="ownership" />);
-    expect(screen.getByText("Project-owned")).toBeInTheDocument();
-    expect(screen.getByText("Collectively owned")).toBeInTheDocument();
-    expect(screen.getByText("DAO-owned")).toBeInTheDocument();
+    rerender(<Deck key="competition" />);
+    expect(screen.getByText("Yukon")).toBeInTheDocument();
+    expect(screen.getByText("OpenSolve")).toBeInTheDocument();
+    expect(screen.getByText("Any project")).toBeInTheDocument();
+    expect(screen.getByText("GitHub-native")).toBeInTheDocument();
+    expect(screen.getByText("Open-source first")).toBeInTheDocument();
 
-    window.history.replaceState({}, "", "/deck#8");
+    window.history.replaceState({}, "", "/deck#7");
     rerender(<Deck key="economics" />);
-    expect(screen.getByText(/Base case: a 1% payout fee/)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: "This can actually make a lot of money.",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/3% of payouts plus sponsorships/),
+    ).toBeInTheDocument();
     expect(screen.getByText("$2M")).toBeInTheDocument();
     expect(screen.getByText("$1.0M")).toBeInTheDocument();
-    expect(screen.getAllByText("+$400K")).toHaveLength(2);
+    expect(screen.getAllByText("+$500K")).toHaveLength(2);
 
-    window.history.replaceState({}, "", "/deck#9");
+    window.history.replaceState({}, "", "/deck#8");
     rerender(<Deck key="raise" />);
-    expect(screen.getByText("$250K")).toBeInTheDocument();
+    expect(screen.getAllByText("$250K")).toHaveLength(2);
     expect(screen.getByText("40%")).toBeInTheDocument();
     expect(screen.getByText("$100K")).toBeInTheDocument();
     expect(screen.getByText("Bounties + incentives")).toBeInTheDocument();
@@ -76,5 +105,10 @@ describe("Slop fundraising deck", () => {
     expect(screen.getByText("$50K")).toBeInTheDocument();
     expect(screen.getByText("$25K")).toBeInTheDocument();
     expect(screen.getByText("Legal")).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", {
+        name: /250 thousand dollar allocation: 40 percent team/,
+      }),
+    ).toBeInTheDocument();
   });
 });
